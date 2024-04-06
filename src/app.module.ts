@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { CatsModule } from './cats/cats.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { BreedsModule } from './breeds/breeds.module';
 
 @Module({
   imports: [CatsModule,
@@ -13,7 +14,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: "api-rest-nestjs-bluuweb",
       autoLoadEntities: true,
       synchronize: true,
-    }),],
+    }),
+    BreedsModule,],
   controllers: [],
   providers: [],
 })
