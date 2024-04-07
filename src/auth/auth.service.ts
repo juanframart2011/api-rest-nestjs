@@ -1,20 +1,54 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
 import { RegisterDto } from './dto/register.dto';
+
+import * as bcryptjs from 'bcryptjs';
+import { LoginDto } from './dto/login.dto';
+import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class AuthService {
     
     constructor(
-        private readonly userService:UsersService
+        private readonly userService:UsersService,
+        private readonly jwtService:JwtService
     ){}
 
-    async login(){
+    async login(loginDto:LoginDto){
 
-        return await 'service login';
+        const user = await this.userService.findOneByEmail(loginDto.email);
+        if( !user ){
+
+            throw new UnauthorizedException('el usuario no existe');
+        }
+        
+        const isPasswordValid = await bcryptjs.compare(loginDto.password,user.password);
+
+        if(!isPasswordValid){
+
+            throw new UnauthorizedException('errores de login');
+        }
+
+        const payload = { sub: user.id, username: user.email };
+        return {
+            
+            access_token: await this.jwtService.signAsync(payload),
+            email: user.email
+        };
     }
 
-    async register(registerDto:RegisterDto){
-        return await this.userService.create(registerDto);
+    async register({name, email, password}:RegisterDto){
+
+        const user = await this.userService.findOneByEmail(email);
+        if( user ){
+
+            throw new BadRequestException('el usuario ya existe');
+        }
+
+        return await this.userService.create({
+            name,
+            email,
+            password: await bcryptjs.hash(password,10)
+        });
     }
 }
