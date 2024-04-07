@@ -73,4 +73,9 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 Nest is [MIT licensed](LICENSE).
 
 Documentacion de curso
+
+Parte 1 CRUDS
 https://bluuweb.dev/nestjs/crud-mysql.html
+
+Parte 2 Authorization
+https://bluuweb.dev/nestjs/auth-jwt.html
