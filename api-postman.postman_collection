@@ -232,7 +232,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoibGlvbmVsQG1lc3NpLmNvbSIsImlhdCI6MTcxMjQ3MjQ4OSwiZXhwIjoxNzEyNTU4ODg5fQ.lsaDYIN1SFOSxtWBaYCSpxcwMPT0yX7OZEzcTBRfO94",
+									"value": "",
 									"type": "string"
 								}
 							]
