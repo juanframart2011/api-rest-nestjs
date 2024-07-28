@@ -16,7 +16,7 @@ export class AuthService {
 
     async login(loginDto:LoginDto){
 
-        const user = await this.userService.findOneByEmail(loginDto.email);
+        const user = await this.userService.findByEmailWithPassword(loginDto.email);
         if( !user ){
 
             throw new UnauthorizedException('el usuario no existe');
@@ -48,7 +48,7 @@ export class AuthService {
         return await this.userService.findOneByEmail(email);
     }
 
-    async register({name, email, password}:RegisterDto){
+    async register({name, email, password, role}:RegisterDto){
 
         const user = await this.userService.findOneByEmail(email);
         if( user ){
@@ -59,6 +59,7 @@ export class AuthService {
         return await this.userService.create({
             name,
             email,
+            role,
             password: await bcryptjs.hash(password,10)
         });
     }

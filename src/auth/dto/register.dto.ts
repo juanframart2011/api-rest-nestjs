@@ -1,5 +1,6 @@
 import { Transform } from "class-transformer";
 import { IsEmail, IsOptional, IsString, MinLength } from "class-validator";
+import { Role } from "src/common/enum/rol.enum";
 
 export class RegisterDto{
     @IsEmail()
@@ -14,4 +15,8 @@ export class RegisterDto{
     @Transform(({value})=> value.trim())
     @IsOptional()
     name?:string;
+
+    @Transform(({value})=> value.trim())
+    @IsOptional()
+    role?:Role;
 }
