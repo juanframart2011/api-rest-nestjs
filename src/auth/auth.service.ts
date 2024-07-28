@@ -33,8 +33,19 @@ export class AuthService {
         return {
             
             access_token: await this.jwtService.signAsync(payload),
-            email: user.email
+            email: user.email,
+            role: user.role
         };
+    }
+
+    async profile({email,role}:{email:string,role:string}){
+
+        /*if( role !== 'admin' ){
+            
+            throw new UnauthorizedException('Not permited');
+        }*/
+
+        return await this.userService.findOneByEmail(email);
     }
 
     async register({name, email, password}:RegisterDto){
