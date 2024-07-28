@@ -142,7 +142,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"antonella\",\r\n    \"email\":\"antonella@messi.com\",\r\n    \"password\": \"123456\"\r\n}",
+							"raw": "{\r\n    \"name\":\"antonella\",\r\n    \"email\":\"antonella3@messi.com\",\r\n    \"password\": \"123456\",\r\n    \"role\":\"admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -232,7 +232,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoibGlvbmVsQG1lc3NpLmNvbSIsImlhdCI6MTcyMjE0MjUxOCwiZXhwIjoxNzIyMjI4OTE4fQ.epXJAV-GZU3VrMfHjjzzLm1QKzm9YxI31r1ZLYTxbFc",
 									"type": "string"
 								}
 							]
@@ -240,7 +240,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/v1/auth",
+							"raw": "localhost:3000/api/v1/auth/profile",
 							"host": [
 								"localhost"
 							],
@@ -248,7 +248,8 @@
 							"path": [
 								"api",
 								"v1",
-								"auth"
+								"auth",
+								"profile"
 							]
 						}
 					},
@@ -417,6 +418,31 @@
 								"v1",
 								"breeds",
 								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/v1/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"users"
 							]
 						}
 					},
