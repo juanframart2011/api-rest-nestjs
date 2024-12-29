@@ -7,7 +7,7 @@ import { Role } from 'src/common/enum/rol.enum';
 import { ActiveUser } from 'src/common/decorators/active-user.decorator';
 import { userActiveInterface } from 'src/common/interfaces/user-active.interface';
 
-@Auth(Role.ADMIN)
+@Auth(Role.USER)
 @Controller('cats')
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}

@@ -62,6 +62,7 @@ export class CatsService {
   }
 
   async remove(id: number,user:userActiveInterface) {
+    await this.findOne(id, user);
     return await this.catRepository.softDelete({id});
   }
 
