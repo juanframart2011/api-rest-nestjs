@@ -52,6 +52,7 @@ export class CatsService {
   }
 
   async update(id: number, updateCatDto: UpdateCatDto,user:userActiveInterface) {
+    
     await this.findOne(id, user );
     return await this.catRepository.update(id, {
       ...updateCatDto,
