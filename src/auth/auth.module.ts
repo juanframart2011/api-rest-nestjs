@@ -11,16 +11,11 @@ import { jwtConstants } from './constants';
   providers: [AuthService],
   imports:[
     UsersModule,
-    JwtModule.registerAsync({
-      imports: [ConfigModule],
-      useFactory: async (configService: ConfigService) => ({
-        secret: configService.get<string>("JWT_SECRET"),
-        signOptions: { expiresIn: "1d" },
-        global: true,
-      }),
-      inject: [ConfigService],
+    JwtModule.register({
+      global: true,
+      secret: jwtConstants.secret,
+      signOptions: { expiresIn: '1d' },
     }),
-  ],
-  exports: [JwtModule],
+  ]
 })
 export class AuthModule {}
