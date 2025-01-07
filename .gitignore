@@ -2,6 +2,10 @@
 /dist
 /node_modules
 mysql
+.env
+
+/postgres
+postgres
 
 # Logs
 logs
