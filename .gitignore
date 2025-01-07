@@ -4,6 +4,9 @@
 mysql
 .env
 
+/postgres
+postgres
+
 # Logs
 logs
 *.log
