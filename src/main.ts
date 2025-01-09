@@ -16,6 +16,8 @@ async function bootstrap() {
     })
   );
 
+  app.enableCors();
+
   //configuración de swagger
   const config = new DocumentBuilder()
     .setTitle('API Blue Web')
